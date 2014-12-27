@@ -2,6 +2,8 @@
 
 My attempts at solving the Matasano crypto challenges using Clojure. See http://cryptopals.com/ for details.
 
+### **NOTE:** The test directory contains challenge solutions, avoid it if you do not wish to be see them.
+
 ## License
 
 Copyright © 2014 Charles Ellis
