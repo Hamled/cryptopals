@@ -11,3 +11,9 @@
     (= test-hex (encode-hex (decode-hex test-hex))))
   (testing "encoding -> decoding round trip"
     (Arrays/equals test-bytes (decode-hex (encode-hex test-bytes)))))
+
+(deftest bitwise-ops
+  (testing "XOR on two byte arrays"
+    (Arrays/equals (byte-array [153 153 102 102]) (byte-xor
+                                                    (byte-array [197 58 53 202])
+                                                    (byte-array [92 163 83 172])))))
