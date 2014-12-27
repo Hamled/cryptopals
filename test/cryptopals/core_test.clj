@@ -4,7 +4,7 @@
   (:import [java.util Arrays]))
 
 (def test-hex "0123456789abcdefdeadbeefdeadbeefdeadbeefdeadbeef")
-(def test-bytes (byte-array [0 1 78 127 -1 -127 -78 37 19 64 -64]))
+(def test-bytes (byte-array [0 1 78 127 -1 -128 -78 37 19 64 -64]))
 
 (deftest hex-conversion
   (testing "decoding -> encoding round trip"
