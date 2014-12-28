@@ -1,4 +1,5 @@
-(ns cryptopals.lang)
+(ns cryptopals.lang
+  (:require [cryptopals.core :refer [get-char]]))
 
 (def char-freq-table-english
   { \a  8.12
@@ -58,7 +59,7 @@
 (defn char-freq-english
   "Frequency score of a given character in English."
   [c]
-  (get char-freq-table-english c -10.00))
+  (get char-freq-table-english (get-char c) -10.00))
 
 (defn score-text-english-simple
   "Score a given text for its likelihood of being English.

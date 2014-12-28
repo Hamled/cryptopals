@@ -23,6 +23,13 @@
   [string]
   (encode-hex (StringUtils/getBytesUtf8 string)))
 
+;; Char conversion
+(defmulti get-char
+  "Get a single character from either a string, a char, or a byte."
+  class)
+(defmethod get-char Character [x] x)
+(defmethod get-char String [x] (get x 0))
+(defmethod get-char Byte [x] (char (bit-and x 255)))
 
 ;; Bitwise operations on byte arrays
 (defn byte-xor
