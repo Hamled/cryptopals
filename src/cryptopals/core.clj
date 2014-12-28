@@ -1,6 +1,6 @@
 (ns cryptopals.core
-  (:import [org.apache.commons.codec.binary Hex]
-           [org.apache.commons.codec.binary StringUtils]))
+  (:require [clj-fuzzy.metrics :refer  [hamming]])
+  (:import [org.apache.commons.codec.binary Hex StringUtils BinaryCodec]))
 
 ;; Hex conversion
 (defn decode-hex
@@ -29,3 +29,8 @@
   "Bitwise XOR on each byte of two arrays."
   [x y]
   (byte-array (map bit-xor x y)))
+
+(defn byte-hamming
+  "Hamming distance (in bits) between two byte arrays."
+  [x y]
+  (hamming (BinaryCodec/toAsciiString x) (BinaryCodec/toAsciiString y)))
