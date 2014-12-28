@@ -33,4 +33,4 @@
 (defn byte-hamming
   "Hamming distance (in bits) between two byte arrays."
   [x y]
-  (hamming (BinaryCodec/toAsciiString x) (BinaryCodec/toAsciiString y)))
+  (hamming (BinaryCodec/toAsciiString (byte-array x)) (BinaryCodec/toAsciiString (byte-array y))))
