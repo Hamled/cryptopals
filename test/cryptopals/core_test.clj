@@ -5,12 +5,15 @@
 
 (def test-hex "0123456789abcdefdeadbeefdeadbeefdeadbeefdeadbeef")
 (def test-bytes (byte-array [0 1 78 127 -1 -128 -78 37 19 64 -64]))
+(def test-string "This is some text.")
 
 (deftest hex-conversion
   (testing "decoding -> encoding round trip"
     (is (= test-hex (encode-hex (decode-hex test-hex )))))
   (testing "encoding -> decoding round trip"
-    (is (Arrays/equals test-bytes (decode-hex (encode-hex test-bytes))))))
+    (is (Arrays/equals test-bytes (decode-hex (encode-hex test-bytes)))))
+  (testing "string decoding -> encoding round trip"
+    (is (= test-string (decode-string (encode-string test-string))))))
 
 (deftest bitwise-ops
   (testing "XOR on two byte arrays"

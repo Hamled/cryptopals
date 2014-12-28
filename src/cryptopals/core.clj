@@ -1,5 +1,6 @@
 (ns cryptopals.core
-  (:import (org.apache.commons.codec.binary Hex)))
+  (:import [org.apache.commons.codec.binary Hex]
+           [org.apache.commons.codec.binary StringUtils]))
 
 ;; Hex conversion
 (defn decode-hex
@@ -11,6 +12,16 @@
   "Encode a byte array into a string of hexadecimal values."
   [byte-values]
   (apply str (Hex/encodeHex byte-values true)))
+
+(defn decode-string
+  "Decode a string of hexadecimal values into a UTF-8 string."
+  [hex]
+  (StringUtils/newStringUtf8 (decode-hex hex)))
+
+(defn encode-string
+  "Encode a UTF-8 text string into a string of hexadecimal values."
+  [string]
+  (encode-hex (StringUtils/getBytesUtf8 string)))
 
 
 ;; Bitwise operations on byte arrays
